@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Contact</title>
+</head>
+
+<body>
+
+  <header>
+
+    <nav>
+
+      <ul>
+
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projetos.html">Projects</a></li>
+        <li><a href="sobre.html">About</a></li>
+
+      </ul>
+
+    </nav>
+
+  </header>
+  <main>
+
+    <section id="contact" class="container">
+
+      <div class="item">
+
+        <h1>
+          Contate-me:
+        </h1>
+        <p>Envie-me uma mensagem através do formulário abaixo:</p>
+
+        <form action="mailto:s.moura.tav@gmail.com" method="post" target="_blank" class="mx-auto"
+          style="max-width: 500px;">
+
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="Seu nome completo">
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="seu.email@exemplo.com">
+          </div>
+
+          <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem:</label>
+            <textarea id="mensagem" name="text" rows="4" class="form-control"
+              placeholder="Escreva aqui a sua mensagem..."></textarea>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-outline-primary mt-3">
+              <i class="bi bi-send-fill me-2"></i> Enviar Mensagem
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+  <footer>
+
+    <p>&copy; OlluaS-code. Todos os direitos reservados.</p>
+
+  </footer>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</html>
