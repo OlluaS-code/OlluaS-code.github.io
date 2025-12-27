@@ -7,7 +7,8 @@ import cors from "cors";
 import sendMail from "./Email/email";
 import { verifyEmailFormat } from "./Email/verifyEmailFormat.service";
 import { resolveMXRecords } from "./Email/resolveMXRecords.service";
-import { testInboxOnServer } from "./Email/testInboxOnServer.service";
+
+import { verifyEmailWithAbstract } from "./Email/verifyEmailWithAbstract.service";
 
 const server = express();
 
@@ -35,53 +36,42 @@ server.post("/contact-us", upload.single("attach"), async (req, res) => {
 
   try {
     if (!email || !name || !message) {
-      return res.status(400).json({ message: "Campos obrigatórios faltando." });
+      return res
+        .status(400)
+        .json({ message: "Ops! Faltam informações obrigatórias. 📝" });
     }
 
-    const emailFormatIsValid = verifyEmailFormat(email);
-    if (!emailFormatIsValid) {
-      return res.status(400).json({ message: "Formato de e-mail inválido." });
+    if (!verifyEmailFormat(email)) {
+      return res
+        .status(400)
+        .json({ message: "Hmm, esse formato de e-mail parece estranho. 🧐" });
     }
 
     const [, domain] = email.split("@");
     const mxRecords = await resolveMXRecords(domain);
 
     if (!mxRecords || mxRecords.length === 0) {
-      return res.status(400).json({ message: "Domínio de e-mail não existe." });
+      return res
+        .status(400)
+        .json({ message: "O domínio desse e-mail não foi encontrado. 🌐" });
     }
 
-    const sortedMxRecords = mxRecords.sort((a, b) => a.priority - b.priority);
+    const isEmailDeliverable = await verifyEmailWithAbstract(email);
 
-    try {
-      console.log(`Tentando verificar inbox para: ${email}...`);
-      const inboxResult = await testInboxOnServer(
-        sortedMxRecords[0].exchange,
-        email
-      );
-
-      if (
-        inboxResult.connection_succeeded &&
-        inboxResult.inbox_exists === false
-      ) {
-        throw new Error(
-          "Endereço de e-mail rejeitado pelo servidor de destino."
-        );
-      }
-    } catch (smtpError: any) {
-      console.warn(
-        "Aviso: Verificação SMTP falhou ou foi bloqueada. Prosseguindo com envio padrão."
-      );
-      console.warn(`Motivo: ${smtpError.message}`);
+    if (!isEmailDeliverable) {
+      return res.status(400).json({
+        message: "O servidor de destino diz que este e-mail não existe. ❌",
+      });
     }
 
     await sendMail({ email, name, message, attach });
 
-    res.json({ success: true });
+    res.json({ success: true, message: "Mensagem enviada com sucesso! 🚀" });
   } catch (error: any) {
-    console.error("Erro final:", error);
-    res
-      .status(400)
-      .json({ message: error.message || "Falha ao enviar e-mail." });
+    console.error("Erro no fluxo:", error);
+    res.status(500).json({
+      message: "Algo deu errado por aqui. Tente novamente em instantes! 🛠️",
+    });
   }
 });
 

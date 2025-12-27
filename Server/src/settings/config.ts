@@ -9,7 +9,9 @@ export class ServerConfig {
     public readonly EMAIL_PASS: string,
     public readonly EMAIL_HOST: string,
     public readonly EMAIL_PORT: number,
-    public readonly EMAIL_SECURE: boolean
+    public readonly EMAIL_SECURE: boolean,
+    public readonly ABSTRACT_API_KEY: string,
+    public readonly ABSTRACT_API_URL: string
   ) {}
 
   public static parseSecure(secureEnv: string | undefined): boolean {
@@ -52,6 +54,8 @@ export class ServerConfig {
       EMAIL_HOST,
       EMAIL_PORT,
       EMAIL_SECURE,
+      ABSTRACT_API_KEY,
+      ABSTRACT_API_URL,
     } = process.env;
 
     const portNumber = ServerConfig.parsePort(PORT);
@@ -60,6 +64,8 @@ export class ServerConfig {
     const portEmail = EMAIL_PORT ?? "smtp.gmail.com";
     const HostEmail = ServerConfig.parseEmailPort(EMAIL_HOST);
     const SecureEmail = ServerConfig.parseSecure(EMAIL_SECURE);
+    const ApiKey = ABSTRACT_API_KEY ?? "";
+    const ApiUrl = ABSTRACT_API_URL ?? "";
 
     return new ServerConfig(
       portNumber,
@@ -67,7 +73,9 @@ export class ServerConfig {
       PassEmail,
       portEmail,
       HostEmail,
-      SecureEmail
+      SecureEmail,
+      ApiKey,
+      ApiUrl
     );
   }
 }
