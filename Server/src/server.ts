@@ -7,7 +7,6 @@ import cors from "cors";
 import sendMail from "./Email/email";
 import { verifyEmailFormat } from "./Email/verifyEmailFormat.service";
 import { resolveMXRecords } from "./Email/resolveMXRecords.service";
-
 import { verifyEmailWithAbstract } from "./Email/verifyEmailWithAbstract.service";
 
 const server = express();
@@ -67,8 +66,8 @@ server.post("/contact-us", upload.single("attach"), async (req, res) => {
     await sendMail({ email, name, message, attach });
 
     res.json({ success: true, message: "Mensagem enviada com sucesso! 🚀" });
-  } catch (error: any) {
-    console.error("Erro no fluxo:", error);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: "Algo deu errado por aqui. Tente novamente em instantes! 🛠️",
     });
