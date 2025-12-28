@@ -12,6 +12,7 @@ export default defineConfig({
         contato: resolve(__dirname, "contato.html"),
         projetos: resolve(__dirname, "projetos.html"),
         sobre: resolve(__dirname, "sobre.html"),
+        obrigado: resolve(__dirname, "obrigado.html"),
       },
     },
   },

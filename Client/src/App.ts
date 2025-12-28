@@ -23,15 +23,12 @@ form.addEventListener("submit", async (event: Event) => {
     });
 
     if (response.data.success) {
-      statusDiv.innerHTML = `<span style="color: #28a745;">Mensagem enviada com sucesso!</span>`;
-      form.reset();
+      window.location.href = "obrigado.html";
     }
   } catch (error: any) {
-    console.error("Erro ao enviar:", error);
-
     const msgErro =
       error.response?.data?.message || "Erro ao conectar com o servidor.";
-    statusDiv.innerHTML = `<span style="color: #dc3545;">Erro: ${msgErro}</span>`;
+    statusDiv.innerHTML = `<span style="color: #dc3545;">${msgErro}</span>`;
   } finally {
     btnEnviar.disabled = false;
     btnEnviar.innerHTML = 'Enviar Mensagem <i class="ri-send-plane-fill"></i>';
