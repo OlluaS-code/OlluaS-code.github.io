@@ -2,7 +2,9 @@ import axios from "axios";
 import { config } from "../settings/config";
 
 type AbstractApiResponse = {
-  deliverability: "DELIVERABLE" | "UNDELIVERABLE" | "RISKY" | "UNKNOWN";
+  email_deliverability: {
+    status: string;
+  };
 };
 
 export const verifyEmailWithAbstract = async (
@@ -19,7 +21,9 @@ export const verifyEmailWithAbstract = async (
       timeout: 10000,
     });
 
-    return response.data.deliverability !== "UNDELIVERABLE";
+    const status = response.data.email_deliverability?.status;
+
+    return status !== "undeliverable";
   } catch (error) {
     return true;
   }
