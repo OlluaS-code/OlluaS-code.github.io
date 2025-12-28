@@ -38,7 +38,7 @@ export class ServerConfig {
     const portEmail = portEnv ? Number(portEnv) : NaN;
 
     if (isNaN(portEmail) || !portEnv) {
-      return 465;
+      return 587;
     }
 
     return portEmail;
@@ -61,8 +61,8 @@ export class ServerConfig {
     const portNumber = ServerConfig.parsePort(PORT);
     const UserEmail = EMAIL_USER ?? "";
     const PassEmail = EMAIL_PASS ?? "";
-    const portEmail = EMAIL_PORT ?? "smtp.gmail.com";
-    const HostEmail = ServerConfig.parseEmailPort(EMAIL_HOST);
+    const HostEmail = EMAIL_HOST ?? "smtp.gmail.com";
+    const portEmail = ServerConfig.parseEmailPort(EMAIL_PORT);
     const SecureEmail = ServerConfig.parseSecure(EMAIL_SECURE);
     const ApiKey = ABSTRACT_API_KEY ?? "";
     const ApiUrl = ABSTRACT_API_URL ?? "";
@@ -71,8 +71,8 @@ export class ServerConfig {
       portNumber,
       UserEmail,
       PassEmail,
-      portEmail,
       HostEmail,
+      portEmail,
       SecureEmail,
       ApiKey,
       ApiUrl
