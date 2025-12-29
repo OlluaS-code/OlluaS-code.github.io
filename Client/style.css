@@ -779,6 +779,15 @@ footer p {
   min-height: 20px;
 }
 
+.field-error .form-label {
+  color: #dc3545 !important;
+}
+
+.field-error .form-control {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1) !important;
+}
+
 @media (max-width: 480px) {
   .contact-form {
     padding: 1.5rem;
