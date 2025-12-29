@@ -13,6 +13,7 @@ form.addEventListener("submit", async (event: Event) => {
   btnEnviar.disabled = true;
   btnEnviar.innerHTML = 'Enviando... <i class="ri-loader-4-line"></i>';
   statusDiv.textContent = "";
+
   fields.forEach((field) => field.classList.remove("field-error"));
 
   const formData = new FormData(form);
@@ -35,14 +36,17 @@ form.addEventListener("submit", async (event: Event) => {
       error.response?.data?.message || "Erro ao conectar com o servidor.";
     statusDiv.innerHTML = `<span style="color: #dc3545;">${msgErro}</span>`;
 
+    const msgLower = msgErro.toLowerCase();
+
     if (
-      msgErro.toLowerCase().includes("e-mail") ||
-      msgErro.toLowerCase().includes("domínio")
+      msgLower.includes("e-mail") ||
+      msgLower.includes("formato") ||
+      msgLower.includes("domínio")
     ) {
       emailInput.parentElement?.classList.add("field-error");
     }
 
-    if (msgErro.toLowerCase().includes("informações obrigatórias")) {
+    if (msgLower.includes("obrigatórias")) {
       if (!nameInput.value)
         nameInput.parentElement?.classList.add("field-error");
       if (!emailInput.value)
