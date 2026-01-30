@@ -162,7 +162,7 @@ O frontend é automaticamente implantado no GitHub Pages através do workflow de
 
 ## 📞 Contato
 
-Saullo - [GitHub](https://github.com/OlluaS-code) - [LinkedIn](#) - [WhatsApp](contato.html#qrcode-section)
+Saullo - [GitHub](https://github.com/OlluaS-code) - [LinkedIn](https://linkedin.com/in/olluas-code/) - [WhatsApp](contato.html#qrcode-section)
 
 ---
 
