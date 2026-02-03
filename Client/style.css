@@ -793,6 +793,20 @@ footer p {
   color: var(--bg-dark);
 }
 
+.field-error .form-label {
+  color: #ef4444 !important;
+}
+
+.field-error .form-control {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.1) !important;
+}
+
+.field-error .form-control::placeholder {
+  color: rgba(239, 68, 68, 0.6);
+}
+
 /* Responsividade Mobile */
 @media (max-width: 991px) {
   .about-grid {
@@ -812,150 +826,167 @@ footer p {
 /* Obrigado.html */
 
 .thanks-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .thanks-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 140px 5% 60px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 5% 60px;
 }
 
 .thanks-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 40px;
-    padding: 60px;
-    max-width: 700px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 60px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Animação de Sucesso Customizada */
 .success-animation {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .circle-loader {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: rgba(37, 99, 235, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    position: relative;
-    animation: pulse 2s infinite;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  animation: pulse 2s infinite;
 }
 
 .success-icon {
-    font-size: 80px;
-    color: var(--primary-blue);
-    filter: drop-shadow(0 0 15px var(--primary-blue));
-    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 80px;
+  color: var(--primary-blue);
+  filter: drop-shadow(0 0 15px var(--primary-blue));
+  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
-    70% { box-shadow: 0 0 0 30px rgba(37, 99, 235, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 30px rgba(37, 99, 235, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
 }
 
 @keyframes scaleIn {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .thanks-content .badge {
-    background: rgba(16, 185, 129, 0.1);
-    color: #10b981;
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    display: inline-block;
-    border: 1px solid rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  display: inline-block;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .thanks-content h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 20px;
-    background: linear-gradient(to right, #fff, var(--accent-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #fff, var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .thanks-content p {
-    color: var(--text-dim);
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .thanks-divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--glass-border), transparent);
-    margin: 40px 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--glass-border),
+    transparent
+  );
+  margin: 40px 0;
 }
 
 .next-steps {
-    font-weight: 700;
-    color: var(--text-main) !important;
-    margin-bottom: 20px !important;
+  font-weight: 700;
+  color: var(--text-main) !important;
+  margin-bottom: 20px !important;
 }
 
 .thanks-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
 .thanks-footer {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .thanks-footer p {
-    font-size: 0.85rem;
-    margin-bottom: 15px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
 }
 
 .social-icons-thanks {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .social-icons-thanks a {
-    font-size: 1.5rem;
-    color: var(--text-dim);
-    transition: all 0.3s;
+  font-size: 1.5rem;
+  color: var(--text-dim);
+  transition: all 0.3s;
 }
 
 .social-icons-thanks a:hover {
-    color: var(--primary-blue);
-    transform: translateY(-5px);
+  color: var(--primary-blue);
+  transform: translateY(-5px);
 }
 
 @media (max-width: 600px) {
-    .thanks-card {
-        padding: 40px 20px;
-        border-radius: 30px;
-    }
-    .thanks-buttons {
-        flex-direction: column;
-    }
+  .thanks-card {
+    padding: 40px 20px;
+    border-radius: 30px;
+  }
+  .thanks-buttons {
+    flex-direction: column;
+  }
 }
